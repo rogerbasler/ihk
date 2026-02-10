@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IHK Niederbayern – KI: Was wir jetzt entscheiden, bestimmt unsere Zukunft | Roger Basler de Roca</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0a0f1a;
+            --paper: #f4f1ec;
+            --accent: #0052cc;
+            --accent-light: #e8f0fe;
+            --accent-dark: #003d99;
+            --warm: #c45d3e;
+            --warm-light: #fdf0ec;
+            --grey-100: #f7f5f2;
+            --grey-200: #e8e4df;
+            --grey-400: #9e978e;
+            --grey-600: #5c574f;
+            --radius: 12px;
+            --shadow-sm: 0 1px 3px rgba(10,15,26,0.06);
+            --shadow-md: 0 8px 30px rgba(10,15,26,0.08);
+            --shadow-lg: 0 20px 60px rgba(10,15,26,0.12);
+        }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: 'Instrument Sans', sans-serif;
+        background: var(--paper);
+        color: var(--ink);
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 60px 24px;
+        position: relative;
+        overflow: hidden;
+        background: var(--ink);
+        color: #fff;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(ellipse 80% 60% at 20% 80%, rgba(0,82,204,0.2) 0%, transparent 60%),
+            radial-gradient(ellipse 60% 50% at 80% 20%, rgba(196,93,62,0.15) 0%, transparent 60%);
+    }
+
+    .hero::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0z' fill='none'/%3E%3Cpath d='M30 0v60M0 30h60' stroke='%23ffffff' stroke-width='.3' opacity='.04'/%3E%3C/svg%3E");
+        opacity: 1;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 900px;
+    }
+
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.12);
+        padding: 8px 20px;
+        border-radius: 100px;
+        font-size: 0.85em;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin-bottom: 40px;
+        backdrop-filter: blur(10px);
+        animation: fadeDown 0.8s ease both;
+    }
+
+    .hero-badge .dot {
+        width: 6px; height: 6px;
+        background: var(--warm);
+        border-radius: 50%;
+        animation: pulse 2s ease infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    .hero h1 {
+        font-family: 'DM Serif Display', serif;
+        font-size: clamp(2.8rem, 6vw, 5.2rem);
+        font-weight: 400;
+        line-height: 1.1;
+        margin-bottom: 28px;
+        animation: fadeUp 0.8s ease 0.1s both;
+    }
+
+    .hero h1 em {
+        font-style: italic;
+        color: var(--warm);
+    }
+
+    .hero-sub {
+        font-size: 1.15em;
+        color: rgba(255,255,255,0.7);
+        max-width: 600px;
+        margin: 0 auto 40px;
+        animation: fadeUp 0.8s ease 0.2s both;
+    }
+
+    .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        justify-content: center;
+        font-size: 0.9em;
+        color: rgba(255,255,255,0.5);
+        animation: fadeUp 0.8s ease 0.3s both;
+    }
+
+    .hero-meta span { display: flex; align-items: center; gap: 6px; }
+
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── SCROLL INDICATOR ─── */
+    .scroll-hint {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        animation: bounce 2s ease infinite;
+        opacity: 0.4;
+    }
+    .scroll-hint svg { width: 24px; height: 24px; stroke: #fff; fill: none; stroke-width: 2; }
+    @keyframes bounce {
+        0%, 100% { transform: translateX(-50%) translateY(0); }
+        50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ─── LAYOUT ─── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    section {
+        padding: 100px 0;
+        position: relative;
+    }
+
+    .section-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75em;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--accent);
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .section-label::before {
+        content: '';
+        width: 24px;
+        height: 1.5px;
+        background: var(--accent);
+    }
+
+    h2 {
+        font-family: 'DM Serif Display', serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 400;
+        line-height: 1.15;
+        margin-bottom: 24px;
+        color: var(--ink);
+    }
+
+    h3 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.5em;
+        font-weight: 400;
+        margin-bottom: 12px;
+    }
+
+    .lead {
+        font-size: 1.15em;
+        color: var(--grey-600);
+        max-width: 700px;
+        margin-bottom: 48px;
+    }
+
+    /* ─── QUOTE BLOCK ─── */
+    .quote-block {
+        background: var(--ink);
+        color: #fff;
+        padding: 60px;
+        border-radius: var(--radius);
+        margin: 60px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .quote-block::before {
+        content: '«';
+        font-family: 'DM Serif Display', serif;
+        font-size: 12rem;
+        position: absolute;
+        top: -30px;
+        left: 20px;
+        opacity: 0.06;
+        line-height: 1;
+    }
+
+    .quote-block blockquote {
+        font-family: 'DM Serif Display', serif;
+        font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+        font-style: italic;
+        line-height: 1.4;
+        position: relative;
+        z-index: 1;
+    }
+
+    .quote-block cite {
+        display: block;
+        margin-top: 20px;
+        font-family: 'Instrument Sans', sans-serif;
+        font-style: normal;
+        font-size: 0.85rem;
+        opacity: 0.5;
+    }
+
+    /* ─── KI OVERVIEW SECTION ─── */
+    .ki-stack {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+        margin: 48px 0;
+    }
+
+    .ki-layer {
+        background: #fff;
+        border: 1px solid var(--grey-200);
+        border-radius: var(--radius);
+        padding: 32px 28px;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .ki-layer:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--accent);
+    }
+
+    .ki-layer .layer-num {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7em;
+        color: var(--accent);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+    }
+
+    .ki-layer h4 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.2em;
+        margin-bottom: 8px;
+    }
+
+    .ki-layer p {
+        font-size: 0.92em;
+        color: var(--grey-600);
+        line-height: 1.55;
+    }
+
+    /* ─── GPT DECODER ─── */
+    .gpt-decode {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+        margin: 48px 0;
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid var(--grey-200);
+    }
+
+    .gpt-letter {
+        background: #fff;
+        padding: 40px 28px;
+        text-align: center;
+        border-right: 1px solid var(--grey-200);
+        transition: background 0.3s ease;
+    }
+
+    .gpt-letter:last-child { border-right: none; }
+    .gpt-letter:hover { background: var(--accent-light); }
+
+    .gpt-letter .letter {
+        font-family: 'DM Serif Display', serif;
+        font-size: 3.5em;
+        color: var(--accent);
+        line-height: 1;
+        margin-bottom: 8px;
+    }
+
+    .gpt-letter .en { font-weight: 600; font-size: 1em; margin-bottom: 4px; }
+    .gpt-letter .de { font-size: 0.88em; color: var(--grey-600); }
+
+    /* ─── AGENTS SECTION ─── */
+    .agent-box {
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+        color: #fff;
+        border-radius: var(--radius);
+        padding: 60px;
+        margin: 48px 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+    }
+
+    .agent-box h3 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 2em;
+        color: #fff;
+    }
+
+    .agent-box p { color: rgba(255,255,255,0.85); }
+
+    .agent-tasks {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .agent-tasks li {
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.15);
+        padding: 14px 20px;
+        border-radius: 8px;
+        font-size: 0.95em;
+    }
+
+    /* ─── PILLARS ─── */
+    .pillars {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        margin: 48px 0;
+    }
+
+    .pillar {
+        background: #fff;
+        border: 1px solid var(--grey-200);
+        border-radius: var(--radius);
+        padding: 40px 32px;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .pillar:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--accent);
+    }
+
+    .pillar-num {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7em;
+        color: var(--accent);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+    }
+
+    .pillar h3 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.4em;
+        margin-bottom: 12px;
+    }
+
+    .pillar-desc {
+        color: var(--grey-600);
+        font-size: 0.95em;
+        line-height: 1.55;
+        margin-bottom: 20px;
+    }
+
+    .pillar-tool {
+        display: inline-block;
+        background: var(--accent-light);
+        color: var(--accent);
+        padding: 6px 14px;
+        border-radius: 6px;
+        font-size: 0.8em;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+    }
+
+    /* ─── TOOL CARDS ─── */
+    .tool-card {
+        background: #fff;
+        border: 1px solid var(--grey-200);
+        border-radius: var(--radius);
+        padding: 40px;
+        margin: 32px 0;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 32px;
+        align-items: center;
+        transition: all 0.3s ease;
+    }
+
+    .tool-card:hover {
+        box-shadow: var(--shadow-sm);
+        border-color: var(--accent);
+    }
+
+    .tool-card h4 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.3em;
+        margin-bottom: 8px;
+    }
+
+    .tool-card p {
+        color: var(--grey-600);
+        font-size: 0.95em;
+        line-height: 1.55;
+    }
+
+    .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--ink);
+        color: #fff;
+        text-decoration: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.9em;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+
+    .cta-btn:hover {
+        background: var(--accent);
+        transform: translateX(4px);
+    }
+
+    .cta-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ─── DOMINANZ SECTION ─── */
+    .dominanz-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin: 48px 0;
+    }
+
+    .dominanz-card {
+        background: #fff;
+        border: 1px solid var(--grey-200);
+        border-radius: var(--radius);
+        padding: 32px 24px;
+        position: relative;
+    }
+
+    .dominanz-card .dom-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7em;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 12px;
+    }
+
+    .dominanz-card h4 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+
+    .dominanz-card p {
+        font-size: 0.88em;
+        color: var(--grey-600);
+        line-height: 1.5;
+    }
+
+    .dominanz-card .dom-bar {
+        height: 3px;
+        background: var(--grey-200);
+        border-radius: 2px;
+        margin-top: 16px;
+        overflow: hidden;
+    }
+
+    .dominanz-card .dom-bar span {
+        display: block;
+        height: 100%;
+        border-radius: 2px;
+        background: var(--accent);
+    }
+
+    /* ─── GCES FRAMEWORK ─── */
+    .gces-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin: 48px 0;
+    }
+
+    .gces-item {
+        background: #fff;
+        border: 1px solid var(--grey-200);
+        border-radius: var(--radius);
+        padding: 32px 24px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .gces-item:hover {
+        border-color: var(--accent);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .gces-item .gces-letter {
+        font-family: 'DM Serif Display', serif;
+        font-size: 2.5em;
+        color: var(--accent);
+        line-height: 1;
+        margin-bottom: 8px;
+    }
+
+    .gces-item .gces-label {
+        font-weight: 600;
+        font-size: 0.95em;
+        margin-bottom: 8px;
+    }
+
+    .gces-item .gces-desc {
+        font-size: 0.82em;
+        color: var(--grey-600);
+        line-height: 1.45;
+    }
+
+    /* ─── CRAP CHECK ─── */
+    .crap-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin: 48px 0;
+    }
+
+    .crap-item {
+        background: #fff;
+        border: 1px solid var(--grey-200);
+        border-radius: var(--radius);
+        padding: 32px 24px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .crap-item:hover {
+        border-color: var(--warm);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .crap-item .crap-letter {
+        font-family: 'DM Serif Display', serif;
+        font-size: 2.5em;
+        color: var(--warm);
+        line-height: 1;
+        margin-bottom: 8px;
+    }
+
+    .crap-item .crap-label { font-weight: 600; font-size: 0.95em; margin-bottom: 6px; }
+    .crap-item .crap-desc { font-size: 0.82em; color: var(--grey-600); }
+
+    /* ─── EU ALTERNATIVES ─── */
+    .eu-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 32px 0;
+    }
+
+    .eu-tag {
+        background: var(--accent-light);
+        border: 1px solid rgba(0,82,204,0.15);
+        color: var(--accent);
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.9em;
+        letter-spacing: 0.02em;
+    }
+
+    .eu-tag-link {
+        background: var(--accent-light);
+        border: 1px solid rgba(0,82,204,0.15);
+        color: var(--accent);
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.9em;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        transition: all 0.25s ease;
+        display: inline-block;
+    }
+
+    .eu-tag-link:hover {
+        background: var(--accent);
+        color: #fff;
+        border-color: var(--accent);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-sm);
+    }
+
+    /* ─── GOVERNANCE SUMMARY ─── */
+    .governance-summary {
+        background: var(--ink);
+        color: #fff;
+        border-radius: var(--radius);
+        padding: 60px;
+        margin: 60px 0;
+        text-align: center;
+    }
+
+    .governance-summary h3 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.6em;
+        color: #fff;
+        margin-bottom: 8px;
+    }
+
+    .governance-summary p {
+        color: rgba(255,255,255,0.6);
+        font-size: 1em;
+    }
+
+    .governance-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 36px;
+        flex-wrap: wrap;
+    }
+
+    .gov-step {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.12);
+        padding: 16px 28px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.95em;
+    }
+
+    .gov-arrow { color: rgba(255,255,255,0.3); font-size: 1.3em; }
+
+    /* ─── FOOTER ─── */
+    footer {
+        background: var(--ink);
+        color: #fff;
+        padding: 80px 0 50px;
+        text-align: center;
+    }
+
+    footer h2 {
+        font-family: 'DM Serif Display', serif;
+        color: #fff;
+        font-size: 2em;
+        margin-bottom: 8px;
+    }
+
+    footer .lead {
+        color: rgba(255,255,255,0.5);
+        font-size: 1em;
+        margin-bottom: 40px;
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        margin-bottom: 48px;
+        flex-wrap: wrap;
+    }
+
+    .footer-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #fff;
+        text-decoration: none;
+        padding: 12px 24px;
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 0.9em;
+        transition: all 0.3s ease;
+    }
+
+    .footer-link:hover {
+        background: rgba(255,255,255,0.08);
+        border-color: rgba(255,255,255,0.3);
+    }
+
+    .footer-copy {
+        padding-top: 40px;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        color: rgba(255,255,255,0.3);
+        font-size: 0.85em;
+    }
+
+    .footer-copy em {
+        display: block;
+        margin-top: 8px;
+        font-style: italic;
+        color: rgba(255,255,255,0.2);
+    }
+
+    /* ─── DIVIDER ─── */
+    .section-divider {
+        width: 100%;
+        height: 1px;
+        background: var(--grey-200);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+        .pillars, .dominanz-grid { grid-template-columns: 1fr; }
+        .gces-grid, .crap-grid { grid-template-columns: repeat(2, 1fr); }
+        .gpt-decode { grid-template-columns: 1fr; }
+        .gpt-letter { border-right: none; border-bottom: 1px solid var(--grey-200); }
+        .gpt-letter:last-child { border-bottom: none; }
+        .agent-box { grid-template-columns: 1fr; padding: 40px 28px; }
+        .tool-card { grid-template-columns: 1fr; }
+        .quote-block { padding: 40px 28px; }
+    }
+
+    @media (max-width: 600px) {
+        .gces-grid, .crap-grid { grid-template-columns: 1fr; }
+        section { padding: 60px 0; }
+    }
+
+    /* ─── REALITY GRID ─── */
+    .reality-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin: 48px 0;
+    }
+
+    .reality-card {
+        background: #fff;
+        border: 1px solid var(--grey-200);
+        border-radius: var(--radius);
+        padding: 32px 24px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .reality-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--warm);
+    }
+
+    .reality-icon { font-size: 2em; margin-bottom: 12px; }
+
+    .reality-label {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.15em;
+        margin-bottom: 8px;
+    }
+
+    .reality-desc { font-size: 0.85em; color: var(--grey-600); line-height: 1.45; }
+
+    /* ─── PROMPT EXAMPLES ─── */
+    .prompt-examples { display: grid; gap: 12px; margin: 32px 0; }
+
+    .prompt-example {
+        background: var(--ink);
+        color: #fff;
+        border-radius: 8px;
+        padding: 16px 24px 16px 48px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85em;
+        line-height: 1.5;
+        position: relative;
+    }
+
+    .prompt-example::before {
+        content: '>';
+        position: absolute;
+        left: 20px;
+        color: var(--accent);
+        font-weight: 700;
+    }
+
+    /* ─── STAT CALLOUT ─── */
+    .stat-callout {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        background: var(--warm-light);
+        border: 1px solid rgba(196,93,62,0.2);
+        border-radius: var(--radius);
+        padding: 32px 40px;
+        margin: 32px 0;
+    }
+
+    .stat-number {
+        font-family: 'DM Serif Display', serif;
+        font-size: 3.5em;
+        color: var(--warm);
+        line-height: 1;
+        white-space: nowrap;
+    }
+
+    .stat-text { font-size: 1em; color: var(--grey-600); }
+    .stat-text strong { color: var(--ink); }
+    .stat-source { font-size: 0.8em; color: var(--grey-400); margin-top: 4px; }
+
+    /* ─── BRIDGE CALLOUT ─── */
+    .bridge-callout {
+        background: linear-gradient(135deg, var(--ink) 0%, #1a2340 100%);
+        color: #fff;
+        border-radius: var(--radius);
+        padding: 60px;
+        margin: 48px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .bridge-callout::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 50% 50%, rgba(0,82,204,0.15) 0%, transparent 70%);
+    }
+
+    .bridge-callout h3 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 2em;
+        color: #fff;
+        position: relative;
+        z-index: 1;
+        margin-bottom: 12px;
+    }
+
+    .bridge-callout p {
+        color: rgba(255,255,255,0.6);
+        font-size: 1.05em;
+        position: relative;
+        z-index: 1;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* ─── ACTION ROADMAP ─── */
+    .roadmap { position: relative; margin: 48px 0; }
+
+    .roadmap::before {
+        content: '';
+        position: absolute;
+        left: 32px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--grey-200);
+    }
+
+    .roadmap-phase {
+        position: relative;
+        padding-left: 80px;
+        padding-bottom: 48px;
+    }
+
+    .roadmap-phase:last-child { padding-bottom: 0; }
+
+    .roadmap-marker {
+        position: absolute;
+        left: 16px;
+        top: 0;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75em;
+        font-weight: 700;
+        color: #fff;
+        z-index: 1;
+    }
+
+    .roadmap-phase:nth-child(1) .roadmap-marker { background: var(--accent); }
+    .roadmap-phase:nth-child(2) .roadmap-marker { background: var(--warm); }
+    .roadmap-phase:nth-child(3) .roadmap-marker { background: #2d9d78; }
+    .roadmap-phase:nth-child(4) .roadmap-marker { background: #7c5cbf; }
+
+    .roadmap-header {
+        display: flex;
+        align-items: baseline;
+        gap: 16px;
+        margin-bottom: 8px;
+        flex-wrap: wrap;
+    }
+
+    .roadmap-header h3 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.5em;
+        margin-bottom: 0;
+    }
+
+    .roadmap-timeline {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.72em;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 4px 12px;
+        border-radius: 100px;
+        background: var(--grey-100);
+        color: var(--grey-600);
+    }
+
+    .roadmap-desc { color: var(--grey-600); font-size: 0.95em; margin-bottom: 16px; }
+
+    .roadmap-tasks {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 10px;
+    }
+
+    .roadmap-task {
+        background: #fff;
+        border: 1px solid var(--grey-200);
+        border-radius: 8px;
+        padding: 14px 18px;
+        font-size: 0.88em;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .roadmap-task .task-check {
+        width: 18px;
+        height: 18px;
+        min-width: 18px;
+        border: 2px solid var(--grey-200);
+        border-radius: 4px;
+    }
+
+    .roadmap-deliverable {
+        background: var(--accent-light);
+        border: 1px solid rgba(0,82,204,0.12);
+        border-radius: 8px;
+        padding: 14px 18px;
+        font-size: 0.85em;
+        font-weight: 600;
+        color: var(--accent);
+        margin-top: 12px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .roadmap-phase:nth-child(2) .roadmap-deliverable {
+        background: var(--warm-light);
+        border-color: rgba(196,93,62,0.12);
+        color: var(--warm);
+    }
+
+    .roadmap-phase:nth-child(3) .roadmap-deliverable {
+        background: #e8f7f1;
+        border-color: rgba(45,157,120,0.12);
+        color: #2d9d78;
+    }
+
+    @media (max-width: 900px) {
+        .reality-grid { grid-template-columns: repeat(2, 1fr); }
+        .stat-callout { flex-direction: column; text-align: center; gap: 16px; }
+        .bridge-callout { padding: 40px 24px; }
+        .bridge-callout h3 { font-size: 1.5em; }
+    }
+
+    @media (max-width: 600px) {
+        .reality-grid { grid-template-columns: 1fr; }
+        .roadmap-tasks { grid-template-columns: 1fr; }
+    }
+
+    /* ─── SCROLL ANIMATIONS ─── */
+    .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+
+</head>
+<body>
+
+<!-- ═══════ HERO ═══════ -->
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge"><span class="dot"></span> IHK Niederbayern · 2026</div>
+        <h1>Was wir jetzt <em>entscheiden</em>, bestimmt unsere Zukunft</h1>
+        <p class="hero-sub">Künstliche Intelligenz – aber souverän und aus Europa. Ein Handout zur Keynote von Roger Basler de Roca.</p>
+        <div class="hero-meta">
+            <span>🎤 Keynote & Workshop</span>
+            <span>🇪🇺 Europäische Souveränität</span>
+            <span>🔗 #FragRoger</span>
+        </div>
+    </div>
+    <div class="scroll-hint">
+        <svg viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+</section>
+
+<!-- ═══════ INTRO ═══════ -->
+
+<section>
+    <div class="container reveal">
+        <div class="section-label">Ausgangslage</div>
+        <h2>Wir brauchen nicht mehr Tools – wir brauchen Klarheit</h2>
+        <p class="lead">Diese Seite ist keine Präsentationsablage – sie ist eine Souveränitäts-Architektur. Eine verlängerte Denk- und Handlungsebene, die abstrakte KI-Diskussionen in konkrete Werkzeuge übersetzt.</p>
+
+    <div class="quote-block">
+        <blockquote>Künstlich ist die Maschine, Intelligenz sollte vom Menschen kommen.</blockquote>
+        <cite>— Roger Basler de Roca</cite>
+    </div>
+</div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ GENAI REALITÄT ═══════ -->
+
+<section>
+    <div class="container reveal">
+        <div class="section-label">Realität</div>
+        <h2>Wofür wird GenAI eigentlich genutzt?</h2>
+        <p class="lead">Bevor wir über Strategie sprechen, lohnt sich ein Blick auf die Realität. Die häufigsten Einsatzfelder zeigen: Es geht längst nicht mehr nur um Produktivität.</p>
+
+    <div class="reality-grid">
+        <div class="reality-card">
+            <div class="reality-icon">💬</div>
+            <div class="reality-label">Therapie</div>
+            <div class="reality-desc">Menschen nutzen KI als Gesprächspartner für emotionale Themen</div>
+        </div>
+        <div class="reality-card">
+            <div class="reality-icon">📋</div>
+            <div class="reality-label">Organisieren</div>
+            <div class="reality-desc">Alltag strukturieren, Pläne erstellen, Aufgaben priorisieren</div>
+        </div>
+        <div class="reality-card">
+            <div class="reality-icon">🧭</div>
+            <div class="reality-label">Lebenssinn finden</div>
+            <div class="reality-desc">Existenzielle Fragen an eine Maschine ohne Lebenserfahrung</div>
+        </div>
+        <div class="reality-card">
+            <div class="reality-icon">📚</div>
+            <div class="reality-label">Hausaufgaben</div>
+            <div class="reality-desc">Lernen oder Auslagern? Die Grenze verschwimmt</div>
+        </div>
+    </div>
+
+    <div class="quote-block" style="background: var(--warm);">
+        <blockquote>Das ist kein Technologieproblem. Das ist ein Kompetenzproblem. Und genau deshalb brauchen wir Klarheit – nicht mehr Tools.</blockquote>
+    </div>
+</div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ KI OVERVIEW ═══════ -->
+
+<section>
+    <div class="container reveal">
+        <div class="section-label">Grundlagen</div>
+        <h2>KI = Kann imitieren</h2>
+        <p class="lead">Klarheit beginnt mit Kontext. Von intelligenten Maschinen bis zu grossen Sprachmodellen – ein Überblick über die Schichten der künstlichen Intelligenz.</p>
+
+    <div class="ki-stack">
+        <div class="ki-layer">
+            <div class="layer-num">Ebene 01</div>
+            <h4>Intelligente Maschinen</h4>
+            <p>Sehr breit definiert – der Überbegriff für alles, was «intelligent» agiert.</p>
+        </div>
+        <div class="ki-layer">
+            <div class="layer-num">Ebene 02</div>
+            <h4>Maschinelles Lernen</h4>
+            <p>Viele Datenpunkte ergeben ein Lernmuster. Die Basis für Mustererkennung.</p>
+        </div>
+        <div class="ki-layer">
+            <div class="layer-num">Ebene 03</div>
+            <h4>Neuronale Netze</h4>
+            <p>Erkennen Muster in unstrukturierten Daten (Text, Bild, Audio). Methoden wie RAG binden externes Wissen ein.</p>
+        </div>
+        <div class="ki-layer">
+            <div class="layer-num">Ebene 04</div>
+            <h4>Grosse Sprachmodelle</h4>
+            <p>GPT, LLaMA, Mistral, Claude, Gemini – generative Modelle, die Text erzeugen und verstehen.</p>
+        </div>
+        <div class="ki-layer">
+            <div class="layer-num">Ebene 05</div>
+            <h4>Automationen</h4>
+            <p>Lassen sich ein- und anbinden. Die Brücke zwischen Modell und Geschäftsprozess.</p>
+        </div>
+    </div>
+</div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ GPT DECODED ═══════ -->
+
+<section>
+    <div class="container reveal">
+        <div class="section-label">Begriffe</div>
+        <h2>Was bedeutet eigentlich GPT?</h2>
+        <p class="lead">Kein Kontext. Kein Rahmen. Nur ein Akronym – hier entschlüsselt.</p>
+
+    <div class="gpt-decode">
+        <div class="gpt-letter">
+            <div class="letter">G</div>
+            <div class="en">Generative</div>
+            <div class="de">Erstellend</div>
+        </div>
+        <div class="gpt-letter">
+            <div class="letter">P</div>
+            <div class="en">Pretrained</div>
+            <div class="de">Vortrainiert</div>
+        </div>
+        <div class="gpt-letter">
+            <div class="letter">T</div>
+            <div class="en">Transformer</div>
+            <div class="de">Umwandler</div>
+        </div>
+    </div>
+
+    <div class="quote-block">
+        <blockquote>Kontext macht den Unterschied. Und auch ein KI-Modell wie GPT weiss nicht, was es nicht weiss.</blockquote>
+        <cite>— Roger Basler de Roca</cite>
+    </div>
+</div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ AGENTS ═══════ -->
+
+<section>
+    <div class="container reveal">
+        <div class="section-label">Zukunft</div>
+        <h2>KI-Agenten: Das Ende von Software wie wir sie kennen</h2>
+        <p class="lead">KI-Agenten sind Systeme mit delegierter Handlungsmacht. Jeder Klick eine Entscheidung. Unser Wert: Souveränität.</p>
+
+    <div class="agent-box">
+        <div>
+            <h3>Wofür nutzen?</h3>
+            <p>Agenten übernehmen Aufgaben, die wir bisher über Interfaces erledigt haben – und ein Agent braucht noch mehr Kontext-Engineering.</p>
+        </div>
+        <ul class="agent-tasks">
+            <li>Eingabe von Daten</li>
+            <li>Abgleich von Daten</li>
+            <li>Ordnen von Daten</li>
+            <li>Ausführen von Interface-Aufgaben</li>
+        </ul>
+    </div>
+
+    <div class="bridge-callout">
+        <h3>Jeder Klick eine Entscheidung</h3>
+        <p>Wenn Software verschwindet und Agenten übernehmen, wird jede Delegation zu einer Vertrauensfrage. Wer nicht prüft, gibt ab. Wer nicht versteht, verliert Souveränität – nicht an die KI, sondern an die eigene Bequemlichkeit.</p>
+    </div>
+</div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ SOUVERÄNITÄT ═══════ -->
+
+<section>
+    <div class="container reveal">
+        <div class="section-label">Haltung</div>
+        <h2>Digitale Souveränität entsteht durch Kompetenzen</h2>
+        <p class="lead">Nicht durch Compliance, sondern durch Können. Drei neue KI-Kompetenzen bilden das Fundament.</p>
+
+    <div class="pillars">
+        <div class="pillar">
+            <div class="pillar-num">Kompetenz 01</div>
+            <h3>Datenkompetenz</h3>
+            <p class="pillar-desc">Unsere Kontextdaten sind wertvoller als das Grundmodell. Wissen, was dominant ist.</p>
+            <span class="pillar-tool">Daten</span>
+        </div>
+        <div class="pillar">
+            <div class="pillar-num">Kompetenz 02</div>
+            <h3>Dialogkompetenz</h3>
+            <p class="pillar-desc">Die KI weiss nicht, was sie weiss – und schon gar nicht, was sie nicht weiss.</p>
+            <span class="pillar-tool">Dialog</span>
+        </div>
+        <div class="pillar">
+            <div class="pillar-num">Kompetenz 03</div>
+            <h3>Prüfungskompetenz</h3>
+            <p class="pillar-desc">Fast jede dritte KI-Antwort enthält Fehler. Sei Teil der Lösung, nicht des Problems.</p>
+            <span class="pillar-tool">Prüfung</span>
+        </div>
+    </div>
+</div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ KOMPETENZ 1: DATEN ═══════ -->
+
+<section>
+    <div class="container reveal">
+        <div class="section-label">Kompetenz 1 · Datenkompetenz</div>
+        <h2>Was beeinflusst was?</h2>
+        <p class="lead">Nicht alles wird vom Modell bestimmt. Kontext, Prompt und Arbeitsmaterialien haben jeweils eigene Dominanzbereiche.</p>
+
+    <div class="dominanz-grid">
+        <div class="dominanz-card">
+            <div class="dom-label">Dominant: Trainingsdaten</div>
+            <h4>Allgemeines Weltwissen</h4>
+            <p>Grundlegende Sprachfähigkeiten und breit verfügbares Wissen.</p>
+            <div class="dom-bar"><span style="width: 90%;"></span></div>
+        </div>
+        <div class="dominanz-card">
+            <div class="dom-label">Dominant: Prompt</div>
+            <h4>Stil & Steuerung</h4>
+            <p>Kreative Ausdrucksweise, Format und komplexe Aufgabensteuerung.</p>
+            <div class="dom-bar"><span style="width: 75%;"></span></div>
+        </div>
+        <div class="dominanz-card">
+            <div class="dom-label">Dominant: Arbeitsmaterialien</div>
+            <h4>Aktuelle Fakten</h4>
+            <p>Unternehmensspezifisches Wissen und aktuelle Informationen.</p>
+            <div class="dom-bar"><span style="width: 85%;"></span></div>
+        </div>
+    </div>
+
+    <p style="font-size: 0.85em; color: var(--grey-400); text-align: right; margin-top: -24px;">Basler et al, 2025 (peer review pending)</p>
+
+    <h3 style="margin-top: 48px;">KI mit unseren Daten – aber sicher in Europa</h3>
+    <p style="color: var(--grey-600); font-size: 0.95em; margin-bottom: 24px;">Hier sind die direkten Links zu den besprochenen Anbietern, damit Sie sich einen Überblick über die Dokumentationen und Preismodelle verschaffen können.</p>
+
+    <div style="margin: 32px 0;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7em; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px;">Foundation & Infrastruktur</div>
+        <div class="eu-strip">
+            <a href="https://mistral.ai" target="_blank" class="eu-tag-link">Mistral AI</a>
+            <a href="https://ionos.de/cloud/ai/ai-model-hub" target="_blank" class="eu-tag-link">IONOS AI Model Hub</a>
+        </div>
+    </div>
+
+    <div style="margin: 32px 0;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7em; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px;">Enterprise Chat & Cockpits</div>
+        <div class="eu-strip">
+            <a href="https://langdock.com" target="_blank" class="eu-tag-link">LangDock</a>
+            <a href="https://omnifact.ai" target="_blank" class="eu-tag-link">Omnifact</a>
+            <a href="https://ambersearch.de" target="_blank" class="eu-tag-link">AmberSearch</a>
+            <a href="https://noxtua.com" target="_blank" class="eu-tag-link">Noxtua / Xayn</a>
+        </div>
+    </div>
+
+    <div style="background: #fff; border: 1px solid var(--grey-200); border-left: 4px solid var(--accent); border-radius: 8px; padding: 20px 24px; margin-top: 24px;">
+        <p style="font-size: 0.9em; color: var(--grey-600); margin: 0;"><strong style="color: var(--ink);">💡 Tipp:</strong> Für KMU-Kunden ist oft der Einstieg über <strong>AmberSearch</strong> einfacher, wenn das Problem «Dokumenten-Chaos» im Vordergrund steht. Wenn es nur um «ChatGPT aber sicher» geht, sind <strong>LangDock</strong> oder <strong>Omnifact</strong> die schlankeren Lösungen.</p>
+    </div>
+</div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ KOMPETENZ 2: DIALOG ═══════ -->
+
+<section>
+    <div class="container reveal">
+        <div class="section-label">Kompetenz 2 · Dialogkompetenz</div>
+        <h2>Das GCES-Framework</h2>
+        <p class="lead">Die KI weiss nicht, was sie weiss. Regelmässige Schulungen und Best Practices machen den Unterschied.</p>
+
+    <div class="gces-grid">
+        <div class="gces-item">
+            <div class="gces-letter">G</div>
+            <div class="gces-label">Ziel</div>
+            <div class="gces-desc">Wohin will ich? Was möchte ich konkret erreichen?</div>
+        </div>
+        <div class="gces-item">
+            <div class="gces-letter">C</div>
+            <div class="gces-label">Kontext</div>
+            <div class="gces-desc">Was ist wichtig über mich und meine Aufgabe? Zeitliche und spezifische Anforderungen.</div>
+        </div>
+        <div class="gces-item">
+            <div class="gces-letter">E</div>
+            <div class="gces-label">Erwartungen</div>
+            <div class="gces-desc">In welchem Format oder für welche Zielgruppe soll die Antwort sein?</div>
+        </div>
+        <div class="gces-item">
+            <div class="gces-letter">S</div>
+            <div class="gces-label">Quellen</div>
+            <div class="gces-desc">Gibt es bestimmte Datenquellen, Dokumente oder Referenzen?</div>
+        </div>
+    </div>
+
+    <div class="quote-block">
+        <blockquote>Die KI weiss nicht, was sie weiss und schon gar nicht, was sie nicht weiss.</blockquote>
+        <cite>— Roger Basler de Roca</cite>
+    </div>
+
+    <h3 style="margin-top: 48px;">So klingt ein guter Prompt</h3>
+    <p style="color: var(--grey-600); font-size: 0.95em; margin-bottom: 16px;">Konkrete Beispiele, die alle vier GCES-Elemente kombinieren:</p>
+    <div class="prompt-examples">
+        <div class="prompt-example">Schreibe für mich eine Anleitung für neue Mitarbeitende im Bereich Buchhaltung. Ich bin Teamleiterin in einem KMU mit 25 Mitarbeitenden. Die Anleitung soll maximal 2 Seiten lang sein und für Personen ohne Vorkenntnisse verständlich. Nutze als Grundlage unser internes Handbuch [Datei].</div>
+        <div class="prompt-example">Analysiere für mich die Routen unserer Aussendienstmitarbeiter in der Region Niederbayern. Wir haben 8 Mitarbeitende mit je ca. 15 Kundenbesuchen pro Woche. Erstelle eine Tabelle mit Optimierungsvorschlägen. Berücksichtige die angehängte Kundenliste [Datei].</div>
+        <div class="prompt-example">Erstelle eine Tabelle von Labels für unsere Produktkategorien. Wir sind ein Lebensmittelhersteller mit 120 Artikeln. Die Labels sollen EU-konform und auf Deutsch sein. Orientiere dich an der EU-Verordnung 1169/2011.</div>
+    </div>
+</div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ KOMPETENZ 3: PRÜFUNG ═══════ -->
+
+<section>
+    <div class="container reveal">
+        <div class="section-label">Kompetenz 3 · Prüfungskompetenz</div>
+        <h2>Prüfen statt Glauben: CRAP-Test</h2>
+        <p class="lead">Was automatisiert wird, muss umso bewusster geprüft werden. Der CRAP-Test macht kritisches Denken operabel.</p>
+
+    <div class="stat-callout">
+        <div class="stat-number">1/3</div>
+        <div>
+            <div class="stat-text"><strong>Fast jede dritte KI-Antwort enthält Fehler.</strong> Das bedeutet: Wer nicht prüft, verbreitet im Schnitt bei jeder dritten Ausgabe Falsches weiter – ohne es zu merken.</div>
+            <div class="stat-source">Quelle: SRF / Neue Studie, 2025</div>
+        </div>
+    </div>
+
+    <div class="crap-grid">
+        <div class="crap-item">
+            <div class="crap-letter">C</div>
+            <div class="crap-label">Currency</div>
+            <div class="crap-desc">Aktualität – Wann wurde veröffentlicht?</div>
+        </div>
+        <div class="crap-item">
+            <div class="crap-letter">R</div>
+            <div class="crap-label">Reliability</div>
+            <div class="crap-desc">Zuverlässigkeit – Primäre oder sekundäre Information?</div>
+        </div>
+        <div class="crap-item">
+            <div class="crap-letter">A</div>
+            <div class="crap-label">Authority</div>
+            <div class="crap-desc">Autorität – Wer hat veröffentlicht?</div>
+        </div>
+        <div class="crap-item">
+            <div class="crap-letter">P</div>
+            <div class="crap-label">Purpose</div>
+            <div class="crap-desc">Absicht – Mit welcher Sichtweise?</div>
+        </div>
+    </div>
+
+    <h3 style="margin-top: 48px;">So prüfen Sie eine KI-Antwort in 60 Sekunden</h3>
+    <div class="prompt-examples">
+        <div class="prompt-example" style="background: var(--warm); color: #fff;"><span style="opacity:0.6;">Schritt 1 ·</span> Ist die Information aktuell? → Prüfen Sie das Datum der zitierten Quelle</div>
+        <div class="prompt-example" style="background: var(--warm); color: #fff;"><span style="opacity:0.6;">Schritt 2 ·</span> Ist es eine Primärquelle? → Fragen Sie die KI: «Woher stammt diese Information?»</div>
+        <div class="prompt-example" style="background: var(--warm); color: #fff;"><span style="opacity:0.6;">Schritt 3 ·</span> Wer steht dahinter? → Googeln Sie Autor/Organisation in 10 Sekunden</div>
+        <div class="prompt-example" style="background: var(--warm); color: #fff;"><span style="opacity:0.6;">Schritt 4 ·</span> Welche Absicht? → Verkauft jemand etwas, oder ist es neutral?</div>
+    </div>
+
+    <p style="font-size: 0.85em; color: var(--grey-400);">Basierend auf Sarah Blakeslee & CSU Chico, 2004</p>
+</div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ TOOLS ═══════ -->
+
+<section>
+    <div class="container reveal">
+        <div class="section-label">Handlungsanleitung</div>
+        <h2>Ihr KI-Fahrplan: Von der Haltung zur Umsetzung</h2>
+        <p class="lead">Kein Diagramm, sondern ein konkreter Plan. Drei Phasen mit klaren Aufgaben, Zeitrahmen und Ergebnissen – direkt umsetzbar nach dieser Veranstaltung.</p>
+
+    <div class="roadmap">
+        <!-- PHASE 1 -->
+        <div class="roadmap-phase">
+            <div class="roadmap-marker">01</div>
+            <div class="roadmap-header">
+                <h3>Entscheiden: KI-Richtlinie definieren</h3>
+                <span class="roadmap-timeline">Woche 1–2</span>
+            </div>
+            <p class="roadmap-desc">Bevor Sie das erste Tool einführen: Klären Sie, was KI in Ihrer Organisation darf, soll und nicht soll. Ohne Richtlinie gibt es keine Souveränität – nur Wildwuchs.</p>
+            <div class="roadmap-tasks">
+                <div class="roadmap-task"><div class="task-check"></div>Verantwortliche Person benennen (KI-Beauftragte/r)</div>
+                <div class="roadmap-task"><div class="task-check"></div>Bestandsaufnahme: Wo wird KI schon genutzt?</div>
+                <div class="roadmap-task"><div class="task-check"></div>Einsatzgrenzen festlegen (z.B. keine KI bei Kunden ohne Kennzeichnung)</div>
+                <div class="roadmap-task"><div class="task-check"></div>Richtlinie verschriftlichen und im Team kommunizieren</div>
+                <div class="roadmap-task"><div class="task-check"></div>Datenschutz klären: Welche Daten dürfen in welches Tool?</div>
+            </div>
+            <div class="roadmap-deliverable">📄 Ergebnis: Eigene KI-Richtlinie (1–2 Seiten)</div>
+            <div style="margin-top: 12px;">
+                <a href="https://professionelle-ki-richtlinien.lovable.app" target="_blank" class="cta-btn" style="font-size: 0.82em; padding: 10px 20px;">Tool: KI-Richtlinien-Generator →</a>
+            </div>
+        </div>
+
+        <!-- PHASE 2 -->
+        <div class="roadmap-phase">
+            <div class="roadmap-marker">02</div>
+            <div class="roadmap-header">
+                <h3>Umsetzen: Erste Use-Cases identifizieren</h3>
+                <span class="roadmap-timeline">Woche 3–4</span>
+            </div>
+            <p class="roadmap-desc">Nicht fragen «Was kann KI?» sondern «Was soll KI bei uns tun?». Starten Sie mit 2–3 konkreten Anwendungsfällen, die schnell Wirkung zeigen.</p>
+            <div class="roadmap-tasks">
+                <div class="roadmap-task"><div class="task-check"></div>Pro Abteilung: 1 Prozess identifizieren, der repetitiv ist</div>
+                <div class="roadmap-task"><div class="task-check"></div>Use-Case bewerten: Aufwand vs. Wirkung</div>
+                <div class="roadmap-task"><div class="task-check"></div>Pilotgruppe (3–5 Personen) für ersten Test definieren</div>
+                <div class="roadmap-task"><div class="task-check"></div>Europäischen Anbieter auswählen (→ Anbieterliste oben)</div>
+                <div class="roadmap-task"><div class="task-check"></div>GCES-Framework im Team schulen (30 Min. reichen)</div>
+            </div>
+            <div class="roadmap-deliverable">🎯 Ergebnis: 2–3 priorisierte Use-Cases mit Pilotplan</div>
+            <div style="margin-top: 12px;">
+                <a href="https://myusecasegenerator.lovable.app" target="_blank" class="cta-btn" style="font-size: 0.82em; padding: 10px 20px; background: var(--warm);">Tool: Use-Case-Generator →</a>
+            </div>
+        </div>
+
+        <!-- PHASE 3 -->
+        <div class="roadmap-phase">
+            <div class="roadmap-marker">03</div>
+            <div class="roadmap-header">
+                <h3>Prüfen: Qualitätsroutine etablieren</h3>
+                <span class="roadmap-timeline">Ab Woche 5 · fortlaufend</span>
+            </div>
+            <p class="roadmap-desc">KI-Ergebnisse sind Entwürfe, keine Fakten. Etablieren Sie eine Prüfkultur, die so selbstverständlich wird wie Korrekturlesen.</p>
+            <div class="roadmap-tasks">
+                <div class="roadmap-task"><div class="task-check"></div>CRAP-Test als Standard bei allen KI-Ausgaben einführen</div>
+                <div class="roadmap-task"><div class="task-check"></div>«Vier-Augen-Prinzip» für KI-generierte Kundenkommunikation</div>
+                <div class="roadmap-task"><div class="task-check"></div>Monatliches Review: Was funktioniert, was nicht?</div>
+                <div class="roadmap-task"><div class="task-check"></div>Fehlerbeispiele sammeln und im Team besprechen</div>
+                <div class="roadmap-task"><div class="task-check"></div>Richtlinie quartalsweise aktualisieren</div>
+            </div>
+            <div class="roadmap-deliverable">✅ Ergebnis: Lebende Prüfroutine + regelmässige Richtlinien-Updates</div>
+            <div style="margin-top: 12px;">
+                <a href="https://crapcheck.ai/" target="_blank" class="cta-btn" style="font-size: 0.82em; padding: 10px 20px; background: #2d9d78;">Tool: CRAPCHECK.AI →</a>
+            </div>
+        </div>
+        <!-- PHASE 4 -->
+        <div class="roadmap-phase">
+            <div class="roadmap-marker" style="background: #7c5cbf;">04</div>
+            <div class="roadmap-header">
+                <h3>Lernen: Zur lernenden Organisation werden</h3>
+                <span class="roadmap-timeline">Fortlaufend · ab Tag 1</span>
+            </div>
+            <p class="roadmap-desc">KI entwickelt sich schneller als jede Schulung. Wer einmal schult und dann aufhört, fällt zurück. Souveränität heisst: als Organisation gemeinsam lernen, austauschen und besser werden – nicht als Einzelkämpfer.</p>
+            <div class="roadmap-tasks">
+                <div class="roadmap-task"><div class="task-check"></div>Internes Best-Practice-Dokument starten (lebendig, nicht perfekt)</div>
+                <div class="roadmap-task"><div class="task-check"></div>Monatlichen KI-Austausch im Team einführen (30 Min. reichen)</div>
+                <div class="roadmap-task"><div class="task-check"></div>Erfolge UND Misserfolge dokumentieren und teilen</div>
+                <div class="roadmap-task"><div class="task-check"></div>Externe Impulse holen: Branchenevents, Webinare, Netzwerke</div>
+                <div class="roadmap-task"><div class="task-check"></div>KI-Richtlinie und Use-Cases quartalsweise gemeinsam reviewen</div>
+                <div class="roadmap-task"><div class="task-check"></div>Neue Teammitglieder systematisch onboarden (KI-Kompetenz = Pflicht)</div>
+            </div>
+            <div class="roadmap-deliverable" style="background: #f3eef9; border-color: rgba(124,92,191,0.12); color: #7c5cbf;">🧠 Ergebnis: Lernkultur, die schneller wächst als die Technologie</div>
+        </div>
+    </div>
+
+    <div class="governance-summary">
+        <h3>Souveränität ist kein Projekt – es ist eine Haltung</h3>
+        <p style="max-width: 700px; margin: 0 auto 12px; color: rgba(255,255,255,0.7); font-size: 1.05em;">Was Sie hier sehen, ist keine Toolchain und kein einmaliges Programm. Es ist ein Governance-Modell, das Ihre Organisation befähigt, KI selbstbestimmt, kompetent und verantwortungsvoll einzusetzen – heute und bei allem, was noch kommt. Die vier Schritte wiederholen sich. Jede Iteration macht Sie souveräner.</p>
+        <div class="governance-flow">
+            <div class="gov-step">① Entscheiden</div>
+            <span class="gov-arrow">→</span>
+            <div class="gov-step">② Umsetzen</div>
+            <span class="gov-arrow">→</span>
+            <div class="gov-step">③ Prüfen</div>
+            <span class="gov-arrow">→</span>
+            <div class="gov-step" style="border-color: rgba(124,92,191,0.5); background: rgba(124,92,191,0.15);">④ Lernen</div>
+        </div>
+        <p style="margin-top: 20px; color: rgba(255,255,255,0.4); font-size: 0.88em;">Werde zur lernenden Organisation – denn wer aufhört zu lernen, hört auf souverän zu sein.</p>
+    </div>
+</div>
+
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+
+<footer>
+    <div class="container">
+        <h2>Roger Basler de Roca</h2>
+        <p class="footer-tagline">Entrepreneur, Keynote Speaker & KI-Berater · <span style="color: var(--accent);">#FragRoger</span> – Fragen ist kostenlos und nie umsonst</p>
+
+    <div class="footer-links">
+        <a href="https://www.rogerbasler.ch" target="_blank" class="footer-link">Website</a>
+        <a href="https://www.linkedin.com/in/rogerbasler" target="_blank" class="footer-link">LinkedIn</a>
+        <a href="https://wa.me/41786447681" target="_blank" class="footer-link">WhatsApp</a>
+    </div>
+
+    <div class="footer-copy">
+        <p>© 2026 Roger Basler de Roca. Alle Rechte vorbehalten.</p>
+        <em>Künstlich ist die Maschine, Intelligenz sollte vom Menschen kommen.</em>
+    </div>
+</div>
+
+</footer>
+
+<script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
